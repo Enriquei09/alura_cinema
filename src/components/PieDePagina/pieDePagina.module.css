@@ -1,0 +1,12 @@
+.pieDePagina{
+    display: flex;
+    justify-content: center;    
+    background-color:  var(--negro);
+}
+
+.pieDePagina h2{
+    
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 18px;
+}
