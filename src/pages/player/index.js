@@ -1,14 +1,22 @@
 import Banner from "components/Banner"
 import styles from "./Player.module.css"
 import Titulo from "components/titulo"
-import { useParams } from "react-router-dom"
+import { data, useParams } from "react-router-dom"
 import videos from "data/db.json"
 import NoFound from "pages/noFound"
+import { useEffect, useState } from "react"
 
 function Player(){
-
+    const [video,setVideo] = useState([])    
     const parametros = useParams()
-    const video  = videos.find((video) => video.id === Number(parametros.id))
+    useEffect(()=>{        
+        fetch(`https://my-json-server.typicode.com/Enriquei09/aluraCinea_api/videos?id=${parametros.id}`)
+        .then(response =>response.json())
+        .then(data=>{
+            setVideo(...data)
+        })
+    },[])
+    //const video  = videos.find((video) => video.id === Number(parametros.id))
     console.log(video)
     if(!video)return<NoFound/>
 

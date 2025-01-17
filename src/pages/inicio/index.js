@@ -2,9 +2,20 @@ import styles from "./index.module.css"
 import Banner from "components/Banner";
 import Card from "components/card";
 import Titulo from "components/titulo";
-import videos from "data/db.json"
+import { useEffect, useState } from "react";
+
 
 function Inicio(){
+
+    const [videos, setVideos] = useState([])
+
+    useEffect(() =>{
+        fetch("https://my-json-server.typicode.com/Enriquei09/aluraCinea_api/videos")
+        .then(response => response.json())
+        .then(data =>{
+            setVideos(data)
+        })
+    },[])
 
     return(
         <>
