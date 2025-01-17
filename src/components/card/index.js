@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styles from "./card.module.css"
 import iconfavorito from "./iconFavorito.png"
 import iconNofavorito from "./iconNoFavorito.png"
@@ -11,8 +12,10 @@ function Card({id,capa,titulo}){
 
     return(
         <div className={styles.container}>
-            <img src={capa} alt={titulo} className={styles.capa}/>
-            <h2>{titulo}</h2>
+            <Link className={styles.link} to={`/${id}`}>
+                <img src={capa} alt={titulo} className={styles.capa}/>
+                <h2>{titulo}</h2>
+            </Link>            
             <img src={icon} alt="Icono Favorito" onClick={() =>agregarFavorito({id,titulo,capa})}/>
         </div>
     )
